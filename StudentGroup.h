@@ -15,6 +15,12 @@ public:
 	void remove_student(const std::string& last_name);
 	// Метод для отображения всех студентов группы
 	void display_all() const;
+	// Метод для поиска студента по любому из полей
+	Student* find_student(const std::string& search_term);
+	// Метод для сортировки студентов по фамилии
+	void sort_by_last_name();
+	// Метод для сортировки студентов по дате рождения
+	void sort_by_birth_date();
 private:
 	// Вектор для хранения студентов группы
 	std::vector<Student> students;
