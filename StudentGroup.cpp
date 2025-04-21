@@ -1,51 +1,51 @@
-// Подключение заголовочного файла класса StudentGroup
+// РџРѕРґРєР»СЋС‡РµРЅРёРµ Р·Р°РіРѕР»РѕРІРѕС‡РЅРѕРіРѕ С„Р°Р№Р»Р° РєР»Р°СЃСЃР° StudentGroup
 #include "StudentGroup.h"
-// Подключение библиотеки ввода/вывода
+// РџРѕРґРєР»СЋС‡РµРЅРёРµ Р±РёР±Р»РёРѕС‚РµРєРё РІРІРѕРґР°/РІС‹РІРѕРґР°
 #include <iostream>
-// Подключение библиотеки алгоритмов
+// РџРѕРґРєР»СЋС‡РµРЅРёРµ Р±РёР±Р»РёРѕС‚РµРєРё Р°Р»РіРѕСЂРёС‚РјРѕРІ
 #include <algorithm>
-// Реализация метода добавления студента в группу
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РґРѕР±Р°РІР»РµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р° РІ РіСЂСѓРїРїСѓ
 void StudentGroup::add_student(const Student& student)
 {
 	students.push_back(student);
 }
-// Реализация метода удаления студента из группы
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° СѓРґР°Р»РµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р° РёР· РіСЂСѓРїРїС‹
 void StudentGroup::remove_student(const std::string& last_name)
 {
-	// Поиск студента по фамилии
+	// РџРѕРёСЃРє СЃС‚СѓРґРµРЅС‚Р° РїРѕ С„Р°РјРёР»РёРё
 	for (auto it = students.begin(); it != students.end(); ++it)
 	{
 		if (it->get_last_name() == last_name)
 		{
-			// Удаление найденного студента
+			// РЈРґР°Р»РµРЅРёРµ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЃС‚СѓРґРµРЅС‚Р°
 			students.erase(it);
-			std::cout << "Студент " << last_name << " удален." << std::endl;
+			std::cout << "РЎС‚СѓРґРµРЅС‚ " << last_name << " СѓРґР°Р»РµРЅ." << std::endl;
 			return;
 		}
 	}
-	std::cout << "Студент не найден." << std::endl;
+	std::cout << "РЎС‚СѓРґРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ." << std::endl;
 }
-// Реализация метода отображения всех студентов
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІСЃРµС… СЃС‚СѓРґРµРЅС‚РѕРІ
 void StudentGroup::display_all() const
 {
-	// Проверка на пустоту группы
+	// РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ РіСЂСѓРїРїС‹
 	if (students.empty())
 	{
-		std::cout << "Группа пуста." << std::endl;
+		std::cout << "Р“СЂСѓРїРїР° РїСѓСЃС‚Р°." << std::endl;
 		return;
 	}
-	// Вывод информации о каждом студенте
+	// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєР°Р¶РґРѕРј СЃС‚СѓРґРµРЅС‚Рµ
 	for (const auto& student : students)
 	{
-		std::cout << "Фамилия: " << student.get_last_name()
-			<< ", Дата рождения: " << student.get_birth_date()
-			<< ", Телефон: " << student.get_phone() << std::endl;
+		std::cout << "Р¤Р°РјРёР»РёСЏ: " << student.get_last_name()
+			<< ", Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: " << student.get_birth_date()
+			<< ", РўРµР»РµС„РѕРЅ: " << student.get_phone() << std::endl;
 	}
 }
-// Реализация метода поиска студента
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РїРѕРёСЃРєР° СЃС‚СѓРґРµРЅС‚Р°
 Student* StudentGroup::find_student(const std::string& search_term)
 {
-	// Поиск по всем полям студента
+	// РџРѕРёСЃРє РїРѕ РІСЃРµРј РїРѕР»СЏРј СЃС‚СѓРґРµРЅС‚Р°
 	for (auto& student : students)
 	{
 		if (student.get_last_name() == search_term ||
@@ -57,25 +57,25 @@ Student* StudentGroup::find_student(const std::string& search_term)
 	}
 	return nullptr;
 }
-// Вспомогательная функция для сравнения студентов по фамилии
+// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ СЃС‚СѓРґРµРЅС‚РѕРІ РїРѕ С„Р°РјРёР»РёРё
 static bool compare_by_last_name(const Student& a, const Student& b)
 {
 	return a.get_last_name() < b.get_last_name();
 }
-// Вспомогательная функция для сравнения студентов по дате рождения
+// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ СЃС‚СѓРґРµРЅС‚РѕРІ РїРѕ РґР°С‚Рµ СЂРѕР¶РґРµРЅРёСЏ
 static bool compare_by_birth_date(const Student& a, const Student& b)
 {
 	return a.get_birth_date() < b.get_birth_date();
 }
-// Реализация метода сортировки по фамилии
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ С„Р°РјРёР»РёРё
 void StudentGroup::sort_by_last_name()
 {
 	std::sort(students.begin(), students.end(), compare_by_last_name);
-	std::cout << "Сортировка по фамилии завершена." << std::endl;
+	std::cout << "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С„Р°РјРёР»РёРё Р·Р°РІРµСЂС€РµРЅР°." << std::endl;
 }
-// Реализация метода сортировки по дате рождения
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ РґР°С‚Рµ СЂРѕР¶РґРµРЅРёСЏ
 void StudentGroup::sort_by_birth_date()
 {
 	std::sort(students.begin(), students.end(), compare_by_birth_date);
-	std::cout << "Сортировка по дате рождения завершена." << std::endl;
+	std::cout << "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РґР°С‚Рµ СЂРѕР¶РґРµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°." << std::endl;
 }
